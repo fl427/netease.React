@@ -1,0 +1,14 @@
+.home-module {
+  width: 100%;
+  overflow-x: scroll;
+  background: aquamarine;
+
+  &-title {
+    font-size: 30px;
+  }
+
+  &-content {
+    display: flex;
+    overflow-x: scroll;
+  }
+}

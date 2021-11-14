@@ -1,0 +1,15 @@
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &-star {
+    margin-bottom: 40px;
+  }
+
+  &-recommend {
+    margin-bottom: 40px;
+  }
+}
+
