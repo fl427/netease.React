@@ -1,12 +1,28 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './index.scss';
 
 const Header: React.FC = () => {
+    const navigate = useNavigate();
+    // 后退
+    const handleGoBack = (): void => {
+        navigate(-1);
+    }
+
+    // 前进
+    const handleGoForward = (): void => {
+        navigate(1);
+    }
+
     return (
         <div className={'header'}>
             <div className={'header-route'}>
-                <div>后退</div>
-                <div>前进</div>
+                <div className={'header-route-back'} onClick={handleGoBack}>
+                    <div className={'arrow-icon'}/>
+                </div>
+                <div className={'header-route-forward'} onClick={handleGoForward}>
+                    <div className={'arrow-icon'}/>
+                </div>
             </div>
             <div className={'header-options'}>
                 <div className={'header-options-btn'}>首页</div>
