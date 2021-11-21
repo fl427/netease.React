@@ -4,73 +4,23 @@ button {
   cursor: pointer;
 }
 
-input[type="range"] {
-  height: 5px;
-  -webkit-appearance: none;
-  width: 100%;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  background: #3b7677;
-  transition: background 0.2s ease;
-  cursor: pointer;
-}
-
-.audio-player {
-  max-width: 350px;
-  padding: 24px;
-  border-radius: 20px;
-  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
-  margin: auto;
-  color: var(--white);
-}
-
-.artwork {
-  border-radius: 120px;
-  display: block;
-  margin: auto;
-  height: 200px;
-  width: 200px;
-}
-
-.track-info {
-  text-align: center;
-  z-index: 1;
-  position: relative;
-}
-
-.title {
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.artist {
-  font-weight: 300;
-  margin-top: 0;
-}
-
 .audio-controls {
+  width: 75%;
   display: flex;
   justify-content: space-between;
-  width: 75%;
-  margin: 0 auto 15px;
-}
+  align-items: center;
 
-.audio-controls .prev,
-.audio-controls .next {
-  width: 35px;
-  height: 35px;
-  background: aqua;
-}
+  &-prev svg,
+  &-next svg {
+    width: 30px;
+    height: 30px;
+  }
 
-.audio-controls .play,
-.audio-controls .pause {
-  height: 40px;
-  width: 40px;
-  background: aqua;
-}
-
-.audio-controls path {
-  fill: #fff;
+  &-play svg,
+  &-pause svg {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .color-backdrop {

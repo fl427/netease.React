@@ -1,4 +1,10 @@
 import React from "react";
+import {
+    StepBackwardOutlined,
+    StepForwardOutlined,
+    CaretRightOutlined,
+    PauseOutlined
+} from '@ant-design/icons';
 import './index.scss';
 
 interface Props {
@@ -15,41 +21,29 @@ const AudioControls: React.FC<Props> = ({
    onNextClick
 }) => (
     <div className="audio-controls">
-        <button
-            type="button"
-            className="prev"
+        <StepBackwardOutlined
+            className="audio-controls-prev"
             aria-label="Previous"
             onClick={onPrevClick}
-        >
-            {/*<Prev />*/}
-        </button>
+        />
         {isPlaying ? (
-            <button
-                type="button"
-                className="pause"
-                onClick={() => onPlayPauseClick(false)}
+            <PauseOutlined
+                className="audio-controls-pause"
                 aria-label="Pause"
-            >
-                {/*<Pause />*/}
-            </button>
+                onClick={() => onPlayPauseClick(false)}
+            />
         ) : (
-            <button
-                type="button"
-                className="play"
-                onClick={() => onPlayPauseClick(true)}
+            <CaretRightOutlined
+                className="audio-controls-play"
                 aria-label="Play"
-            >
-                {/*<Play />*/}
-            </button>
+                onClick={() => onPlayPauseClick(true)}
+            />
         )}
-        <button
-            type="button"
-            className="next"
+        <StepForwardOutlined
+            className="audio-controls-next"
             aria-label="Next"
             onClick={onNextClick}
-        >
-            {/*<Next />*/}
-        </button>
+        />
     </div>
 );
 

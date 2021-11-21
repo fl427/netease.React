@@ -147,16 +147,17 @@ const Footer: React.FC<Props> = ({
                 <div className={'footer-music-like'} />
             </div>
             <div className={'footer-control'}>
-                <div className={'footer-control-prev'} />
-                <div className={'footer-control-play'} />
-                <div className={'footer-control-next'} />
+                {/*<div className={'footer-control-prev'} />*/}
+                {/*<div className={'footer-control-play'} />*/}
+                {/*<div className={'footer-control-next'} />*/}
+                <AudioControls
+                    isPlaying={isPlaying}
+                    onPrevClick={toPrevTrack}
+                    onNextClick={toNextTrack}
+                    onPlayPauseClick={setIsPlaying}
+                />
             </div>
-            <AudioControls
-                isPlaying={isPlaying}
-                onPrevClick={toPrevTrack}
-                onNextClick={toNextTrack}
-                onPlayPauseClick={setIsPlaying}
-            />
+
             <div className={'footer-detail'}>
                 <div className={'footer-detail-words'} />
                 <div className={'footer-detail-list'} />
