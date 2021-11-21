@@ -1,5 +1,6 @@
 import React from 'react';
-import Module from "../../components/Module";
+// import Module from "../../components/Module";
+import Module from "@src/components/Module/index";
 import "./index.scss";
 
 const Home: React.FC = () => {

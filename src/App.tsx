@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from "./components/Layout";
-import Home from "./containers/Home";
-import Discovery from "./containers/Discovery";
+import Layout from "@src/components/Layout";
+import Home from "@src/containers/Home";
+import Discovery from "@src/containers/Discovery";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
