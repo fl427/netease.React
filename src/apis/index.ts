@@ -2,6 +2,7 @@
 import axios, {
     AxiosInstance,
     AxiosRequestConfig,
+    AxiosResponse,
     Canceler,
     ResponseType
 } from 'axios';
@@ -53,10 +54,12 @@ const createInstance = (): AxiosInstance => {
     });
 
     // 响应拦截器
-    instance.interceptors.response.use(config => {
-        if (config.data.statusCode >= 3000) {
+    instance.interceptors.response.use(response => {
+        if (response.data.statusCode >= 3000) {
             // Toast
         }
+        removeSource(response.config)
+        return response;
     }, error => {
         if (!error.response) return;
         switch (error.response.status) {
@@ -94,18 +97,17 @@ const axiosInstance: Instance = createInstance();
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-function get(url: string, params?: Record<string, string>) {
-    return new Promise((resolve, reject) => {
-        axiosInstance.get(url, {
+const get = async (url: string, params?: IDictionary<string>) => {
+    try {
+        const { data, status, statusText } = await axiosInstance.get(url, {
             params: {
-                ...params,
-            },
-        }).then(res => {
-            resolve(res);
-        }).catch(err => {
-            reject(err.data)
-        })
-    });
+                ...params
+            }
+        });
+        return data;
+    } catch (e) {
+        console.warn(e);
+    }
 }
 
 /**

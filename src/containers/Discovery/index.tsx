@@ -7,8 +7,8 @@ const Discovery: React.FC = () => {
 
     // 获取精品歌单
     const getHighQualityPlayList = async () => {
-        let response = await get('/top/playlist/highquality');
-        console.log('response', response);
+        let data = await get('/top/playlist/highquality', {});
+        console.log('list', data);
     }
 
     // 初始化
