@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import { get, post } from '@src/apis/index';
 import './index.scss';
 
 const Discovery: React.FC = () => {
+
+    // 获取精品歌单
+    const getHighQualityPlayList = async () => {
+        let response = await get('/top/playlist/highquality');
+        console.log('response', response);
+    }
+
+    // 初始化
+    useEffect(() => {
+        getHighQualityPlayList();
+    }, []);
+
     return (
         <div className={'discovery'}>
             Discovery

@@ -74,10 +74,11 @@ const devServer = {
         // }
 
         // 这样写可以。/api是一个前端路由里没有的值
-        '/api': {
-            target: 'http://localhost:3000',
-            pathRewrite: { '^/api': '' },
-        },
+
+        // '/api': {
+        //     target: 'http://localhost:3000',
+        //     pathRewrite: { '^/api': '' },
+        // },
     }
 }
 

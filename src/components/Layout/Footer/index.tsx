@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Track } from '@src/types';
-import './index.scss';
+// Components
 import AudioControls from './AudioControls';
+// Types
+import { Track } from '@src/types';
+// CSS
+import './index.scss';
 
 interface Props {
     tracks?: Track[];
@@ -13,6 +16,11 @@ const Footer: React.FC<Props> = ({
         author: '周深',
         album: '',
         audioSrc: 'http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_93477122&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3'
+    },{
+        title: 'Nubia',
+        author: '周深',
+        album: '',
+        audioSrc: 'http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_140162434&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3',
     }]
 }) => {
     // State
@@ -147,9 +155,6 @@ const Footer: React.FC<Props> = ({
                 <div className={'footer-music-like'} />
             </div>
             <div className={'footer-control'}>
-                {/*<div className={'footer-control-prev'} />*/}
-                {/*<div className={'footer-control-play'} />*/}
-                {/*<div className={'footer-control-next'} />*/}
                 <AudioControls
                     isPlaying={isPlaying}
                     onPrevClick={toPrevTrack}
