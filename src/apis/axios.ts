@@ -1,4 +1,5 @@
-
+// @reference: https://www.jianshu.com/p/e59aa71e1840
+import toast from '@src/utils/toast';
 import axios, {
     AxiosInstance,
     AxiosRequestConfig,
@@ -17,6 +18,7 @@ const MIME_TYPE: IDictionary<ResponseType> = {
     JSON: 'json',
 }
 
+// 创建Axios实例方法
 const createInstance = (): AxiosInstance => {
     const instance = axios.create({
         baseURL: 'http://localhost:3000',
@@ -56,7 +58,7 @@ const createInstance = (): AxiosInstance => {
     // 响应拦截器
     instance.interceptors.response.use(response => {
         if (response.data.statusCode >= 3000) {
-            // Toast
+            toast.info({ text: 'statusCode >= 3000，请求不存在' });
         }
         removeSource(response.config)
         return response;
@@ -67,15 +69,18 @@ const createInstance = (): AxiosInstance => {
             // 未登录则跳转登录页面，并携带当前页面的路径
             // 在登录成功后返回当前页面，这一步需要在登录页操作。
             case 401:
+                toast.info({ text: '401，未登录' });
                 break;
             // 403 token过期
             // 登录过期对用户进行提示
             // 清除本地token和清空redux中token对象
             // 跳转登录页面
             case 403:
+                toast.info({ text: '403，登录已过期' });
                 break;
             // 404请求不存在
             case 404:
+                toast.info({ text: '404，请求不存在' });
                 break;
             // 其他错误，直接抛出错误提示
             default:
@@ -97,7 +102,7 @@ const axiosInstance: Instance = createInstance();
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-const get = async (url: string, params?: IDictionary<string>) => {
+const get = async<T> (url: string, params?: T) => {
     try {
         const { data, status, statusText } = await axiosInstance.get(url, {
             params: {
@@ -106,6 +111,7 @@ const get = async (url: string, params?: IDictionary<string>) => {
         });
         return data;
     } catch (e) {
+        toast.info({ text: `接口请求失败: ${url}` });
         console.warn(e);
     }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Music from "../Music";
+import Album from "../Album";
 import './index.scss';
 
 interface Props {
@@ -11,8 +11,8 @@ const Module: React.FC<Props> = ({onClick, title}) => {
         <div className={'home-module'} onClick={onClick}>
             <div className={'home-module-title'}>{title}</div>
             <div className={'home-module-content'}>
-                <Music />
-                <Music />
+                <Album />
+                <Album />
             </div>
         </div>
     );
