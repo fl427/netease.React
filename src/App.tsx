@@ -23,7 +23,6 @@ const App = () => {
                 </BrowserRouter>
             </CSSTransition>
         </TransitionGroup>
-
     )
 }
 

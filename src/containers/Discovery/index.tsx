@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import useAsyncEffect, {test} from '@src/hooks/useAsyncEffect';
+import useAsyncEffect from '@src/hooks/useAsyncEffect';
 import { get, post } from '@src/apis/axios';
 import toast from '@src/utils/toast';
 
@@ -49,11 +49,13 @@ const Discovery: React.FC = () => {
     }, []);
 
     // 点击前往歌单页面
-    const toList = (id: number): void => {
-        console.log('to List');
+    const toList = (list: PlayList): void => {
+        console.log('to List', list.coverImgUrl);
         navigate(`/discovery-list`, {
             state: {
-                id
+                id: list.id,
+                coverImg: list.coverImgUrl,
+                title: list.name
             }
         });
     };
@@ -70,7 +72,7 @@ const Discovery: React.FC = () => {
                 {playList.map(list => (
                     <div className={'discovery-playlist-list'} key={list.id}>
                         <Album
-                            onClick={() => toList(list.id)}
+                            onClick={() => toList(list)}
                             coverImg={list.coverImgUrl}
                             playCount={list.playCount}
                             title={list.name}

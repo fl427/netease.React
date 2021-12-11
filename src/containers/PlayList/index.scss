@@ -1,0 +1,61 @@
+.playlist {
+  padding: 0 20px;
+
+  &-album {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    &-coverimg {
+      width: 300px;
+      height: 300px;
+      margin-right: 40px;
+    }
+
+    &-info {
+
+      .title {
+        font-size: 26px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-list {
+
+    &-song {
+      display: flex;
+      justify-content: space-between;
+
+      .info {
+        display: flex;
+
+        .cover-img {
+          width: 40px;
+          height: 40px;
+        }
+
+        .album {
+
+          .title {
+            white-space: nowrap;
+          }
+
+          .author {
+
+          }
+        }
+
+
+      }
+
+      .track-name {
+
+      }
+
+      .duration {
+
+      }
+    }
+  }
+}

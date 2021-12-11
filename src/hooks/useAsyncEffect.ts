@@ -21,11 +21,4 @@ const useAsyncEffect = (
     }, deps);
 };
 
-export function test(a: number, b?: number) {
-    if (b) {
-        return b;
-    }
-    return a;
-}
-
 export default useAsyncEffect;

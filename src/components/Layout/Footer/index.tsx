@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { SongListState } from '@src/redux/reducers';
 // Components
 import AudioControls from './AudioControls';
 // Types
@@ -10,27 +13,19 @@ interface Props {
     tracks?: Track[];
 }
 
-const Footer: React.FC<Props> = ({
-    tracks = [{
-        title: '飘扬过海来看你',
-        author: '周深',
-        album: '',
-        audioSrc: 'http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_93477122&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3'
-    },{
-        title: 'Nubia',
-        author: '周深',
-        album: '',
-        audioSrc: 'http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_140162434&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3',
-    }]
-}) => {
+const Footer: React.FC<Props> = () => {
+    const tracks = useSelector((state: SongListState) => state.tracks);
+    const trackIdx = useSelector((state: SongListState) => state.idx);
+    console.log('content', tracks, trackIdx);
+
     // State
-    const [trackIndex, setTrackIndex] = useState(0);
+    const [trackIndex, setTrackIndex] = useState(trackIdx);
     const [trackProgress, setTrackProgress] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
     // Destructure for conciseness
-    const { title, album, author, audioSrc } = tracks[trackIndex] ?? {};
-
+    const { title, album, author, audioSrc } = tracks[trackIdx] ?? {};
+    console.log('audioSrc', audioSrc, title);
     // Refs
     const audioRef = useRef(new Audio(audioSrc));
     /**
@@ -66,6 +61,7 @@ const Footer: React.FC<Props> = ({
 
     // Handles cleanup and setup when changing tracks
     useEffect(() => {
+        console.log('trackIdx', trackIdx);
         audioRef.current.pause();
         audioRef.current = new Audio(audioSrc);
         setTrackProgress(audioRef.current.currentTime);
