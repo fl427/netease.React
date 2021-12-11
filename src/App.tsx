@@ -5,6 +5,7 @@ import Layout from "@src/components/Layout";
 import Home from "@src/containers/Home";
 import Discovery from "@src/containers/Discovery";
 import PlayList from "@src/containers/PlayList";
+import Login from "@src/containers/Login";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
@@ -18,6 +19,7 @@ const App = () => {
                             <Route path="/" element={<Home />} />
                             <Route path="/discovery" element={<Discovery />} />
                             <Route path="/discovery-list" element={<PlayList />} />
+                            <Route path="/login" element={<Login />} />
                         </Routes>
                     </Layout>
                 </BrowserRouter>

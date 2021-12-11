@@ -14,6 +14,15 @@ const Header: React.FC = () => {
         navigate(1);
     }
 
+    // 点击扫码登录页面
+    const toLogin = (): void => {
+        navigate(`/login`, {
+            state: {
+
+            }
+        });
+    };
+
     return (
         <div className={'header'}>
             <div className={'header-route'}>
@@ -31,6 +40,8 @@ const Header: React.FC = () => {
             </div>
             <div className={'header-search'}>
                 <div>搜索</div>
+            </div>
+            <div className={'header-user'} onClick={toLogin}>
             </div>
         </div>
     )
